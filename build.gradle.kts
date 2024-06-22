@@ -2,7 +2,7 @@ plugins {
 //    kotlin("jvm") version "1.4.30"
     id("java")
     id("com.adarshr.test-logger") version "2.1.1"
-    id("io.qameta.allure") version "2.8.1"
+    id("io.qameta.allure") version "2.11.2"
     id("com.github.ben-manes.versions") version "0.36.0"
 }
 
@@ -10,15 +10,14 @@ group = "dev.kotler"
 version = "1.0-SNAPSHOT"
 
 repositories {
-    mavenLocal()
-    jcenter()
+    mavenCentral()
 }
 configurations {
     create("testCompile")
 }
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
@@ -31,9 +30,9 @@ dependencies {
     val webdriverManagerVersion = "5.8.0"
     val browsermobVersion = "2.1.5"
     val skrapeitVersion = "1.0.0-alpha8"
-    val jUnitVersion = "5.5.2"
+    val jUnitVersion = "5.8.1"
     val assertjVersion = "3.19.0"
-    val striktVersion = "0.28.2"
+    val striktVersion = "0.34.1"
     val awaitilityVersion = "4.0.3"
     val rerunnerVersion = "2.1.6"
     val kotlinLoggerVersion = "2.0.4"
@@ -115,7 +114,7 @@ dependencies {
 
 configurations {
     all {
-        exclude(module = "junit")
+        exclude(module = "junit5")
         exclude(module = "htmlunit-driver")
         exclude(module = "slf4j-log4j12")
         exclude(module = "slf4j-simple")
@@ -128,7 +127,8 @@ tasks {
         useJUnitPlatform()
         parallelTestExecution()
 
-        systemProperty("browser", System.getProperty("browser"))
+//        systemProperty("browser", System.getProperty("browser"))
+        systemProperty("allure.results.directory", "build/allure-results")
 
         finalizedBy("allureReport")
     }
@@ -147,12 +147,23 @@ fun Test.parallelTestExecution() {
     }
 }
 
-allure {
-    val allureVersion = "2.29.0"
-    version = allureVersion
-    autoconfigure = true
-    aspectjVersion = "1.9.6"
-    useJUnit5 {
-        version = allureVersion
-    }
-}
+//allure {
+//    val allureVersion = "2.27.0"
+//    version = allureVersion
+////    autoconfigure = true
+////    aspectjVersion = "1.9.22.1"
+////    useJUnit5 {
+////        version = allureVersion
+////    }
+////    configuration = "testImplementation"
+//}
+
+
+//allure {
+//    autoconfigure = false
+//    version = "2.5.0"
+//    configuration = "implementation"
+//    junit5 {
+//        version = "2.0-BETA21"
+//    }
+//}
