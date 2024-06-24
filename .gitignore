@@ -3,7 +3,6 @@
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
-!**/src/AuthInQaSchoolTest/**/build/
 
 ### IntelliJ IDEA ###
 .idea
@@ -16,7 +15,6 @@ build/
 *.ipr
 out/
 !**/src/main/**/out/
-!**/src/AuthInQaSchoolTest/**/out/
 
 ### Eclipse ###
 .apt_generated
@@ -28,7 +26,6 @@ out/
 .sts4-cache
 bin/
 !**/src/main/**/bin/
-!**/src/AuthInQaSchoolTest/**/bin/
 
 ### NetBeans ###
 /nbproject/private/
