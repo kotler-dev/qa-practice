@@ -74,7 +74,7 @@ public class AutomationPracticeFormTest {
         $("#hobbiesWrapper").$(".custom-control-label", 1).click();
 
         // Picture
-        $("#uploadPicture").uploadFile(new File("src/test/resources/toolsqalogo.png"));
+        $("#uploadPicture").uploadFile(fileLogo);
 
         // Current Address
         $("#currentAddress").setValue("Earth");
